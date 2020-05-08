@@ -1,0 +1,31 @@
+CREATE TABLE cliente (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE pedido (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  cliente_id INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  INDEX pedido_FKIndex1(cliente_id)
+);
+
+CREATE TABLE pedido_item (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pedido_id INTEGER UNSIGNED NOT NULL,
+  produto_id INTEGER UNSIGNED NOT NULL,
+  quantidade INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(id),
+  INDEX pedido_item_FKIndex1(produto_id),
+  INDEX pedido_item_FKIndex2(pedido_id)
+);
+
+CREATE TABLE produto (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  descricao VARCHAR(255) NOT NULL,
+  preco FLOAT NOT NULL,
+  PRIMARY KEY(id)
+);
+
+
